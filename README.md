@@ -15,3 +15,4 @@ You can :
 # External stuffed used
 - [Piano chord API](https://pianoapi.jsdisco.dev/)
 - [Piano React Component](https://www.kevinqi.com/react-piano/)
+- [sampler](https://github.com/danigb/smplr)
