@@ -29,7 +29,7 @@ const MyPiano = ({activeChord}) => {
         playNote={(MidiNumbers) => {console.log(MidiNumbers)}}
         stopNote={(MidiNumbers) => { }}
         activeNotes={getActiveNotes(activeChord)}
-      // disabled={false}
+        // disabled={true}
       />
     </div>
   );

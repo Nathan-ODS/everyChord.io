@@ -1,4 +1,5 @@
 .my-piano {
+    pointer-events: none;
     display: flex;
     flex-direction: column-reverse;
 } 
