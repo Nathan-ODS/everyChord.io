@@ -1,3 +1,9 @@
 .my-piano {
     display: flex;
+    flex-direction: column-reverse;
 } 
+
+.chord-name {
+    padding-top: 10px;
+    font-weight: bold;
+}

@@ -1,11 +1,24 @@
 import React from 'react';
 import "./MyChords.css"
 
-const MyChords = () => {
+const MyChords = ({ activeChord, onChordChange }) => {
+    const chords = ["C", "A", "D", "G"];
+
+    const handleChordClick = (chord) => {
+        onChordChange(chord)
+    }
 
     return (
         <div className='my-chords'>
-            mes accords
+            {chords.map((chord) => (
+                <button
+                    key={chord}
+                    onClick={() => handleChordClick(chord)}
+                    className={activeChord === chord ? "active" : ""}
+                >
+                    {chord}
+                </button>
+            ))}
         </div>
     )
 }
