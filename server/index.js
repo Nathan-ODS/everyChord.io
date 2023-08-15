@@ -1,4 +1,5 @@
 const express = require('express')
+const midiToNote = require('midi-note')
 
 const PORT = /* process.env.PORT || */ 3001
 
@@ -9,9 +10,13 @@ app.get('/api', (req, res) => {
 })
 
 app.get('/api/chord/C', (req, res) => {
+  const midiNotes = [60, 64, 67]
+  const notes = midiNotes.map((midi) => midiToNote(midi))
+
   res.json({
     name: 'C',
-    midiNotes: [60, 64, 67]
+    notes,
+    midiNotes
   })
 })
 

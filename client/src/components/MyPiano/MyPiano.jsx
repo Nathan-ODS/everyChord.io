@@ -12,7 +12,8 @@ const MyPiano = ({activeChord}) => {
     last: lastNote,
   };
 
-  const [activeNotes, setActiveNotes] = useState([])
+  const [activeMidiNotes, setActiveMidiNotes] = useState([]);
+  const [activeNotes, setActiveNotes] = useState([]);
 
   useEffect(() => {
     async function fetchChord() {
@@ -20,10 +21,12 @@ const MyPiano = ({activeChord}) => {
         const res = await fetch(`/api/chord/${activeChord}`);
         const data = await res.json();
 
-        setActiveNotes(data.midiNotes);
+        setActiveMidiNotes(data.midiNotes);
+        setActiveNotes(data.notes);
       } catch (error) {
         console.error("Error fetching", error);
         setActiveNotes([]);
+        setActiveMidiNotes([]);
       }
     }
 
@@ -32,6 +35,7 @@ const MyPiano = ({activeChord}) => {
 
   return (
     <div className="my-piano">
+      <span>{activeMidiNotes}</span>
       <span>{activeNotes}</span>
       <span className="chord-name">{activeChord}</span>
       <Piano
@@ -39,7 +43,7 @@ const MyPiano = ({activeChord}) => {
         width={700}
         playNote={() => { }}
         stopNote={() => { }}
-        activeNotes={activeNotes || []}
+        activeNotes={activeMidiNotes || []}
         // disabled={true}
       />
     </div>
