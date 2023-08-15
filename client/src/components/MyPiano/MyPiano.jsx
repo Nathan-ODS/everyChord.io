@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Piano, MidiNumbers } from 'react-piano';
 import 'react-piano/dist/styles.css';
 import "./MyPiano.css";
@@ -12,23 +12,34 @@ const MyPiano = ({activeChord}) => {
     last: lastNote,
   };
 
-  const getActiveNotes = (activeChord) => {
-    if(activeChord === "C") {
-      return [60,64,67]
+  const [activeNotes, setActiveNotes] = useState([])
+
+  useEffect(() => {
+    async function fetchChord() {
+      try {
+        const res = await fetch(`/api/chord/${activeChord}`);
+        const data = await res.json();
+
+        setActiveNotes(data.midiNotes);
+      } catch (error) {
+        console.error("Error fetching", error);
+        setActiveNotes([]);
+      }
     }
 
-    return []
-  }
+    fetchChord();
+  }, [activeChord])
 
   return (
     <div className="my-piano">
+      <span>{activeNotes}</span>
       <span className="chord-name">{activeChord}</span>
       <Piano
         noteRange={noteRange}
         width={700}
-        playNote={(MidiNumbers) => {console.log(MidiNumbers)}}
-        stopNote={(MidiNumbers) => { }}
-        activeNotes={getActiveNotes(activeChord)}
+        playNote={() => { }}
+        stopNote={() => { }}
+        activeNotes={activeNotes || []}
         // disabled={true}
       />
     </div>
