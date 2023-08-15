@@ -1,5 +1,6 @@
 import React from "react";
 import MyPiano from "./components/MyPiano/MyPiano"
+import MyChords from './components/MyChords/MyChords'
 import "./App.css";
 
 // Main App
@@ -7,9 +8,12 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <MyPiano />
-      </header>
+        <div className="chords-container">
+          <MyChords />
+        </div>
+        <div className="piano-container">
+          <MyPiano />
+        </div>
     </div>
   );
 }
