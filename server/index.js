@@ -22,3 +22,8 @@ app.get('/api/chord/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`)
 })
+
+/*
+var note = require('midi-note')
+note(69) // => 'A4'
+*/
