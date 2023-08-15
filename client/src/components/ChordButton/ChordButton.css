@@ -1,0 +1,20 @@
+.chord-button {
+    height: 50px;
+    width: 50px;
+
+    border: 1px solid;
+    border-radius: 50px;
+    border-color: black;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4); /* Add shadow */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: white;
+}
+
+.active {
+    color: white;
+    background-color: lightgreen;
+}
