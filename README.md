@@ -16,3 +16,4 @@ You can :
 - [Piano chord API](https://pianoapi.jsdisco.dev/)
 - [Piano React Component](https://www.kevinqi.com/react-piano/)
 - [sampler](https://github.com/danigb/smplr)
+- [midi-note](https://www.npmjs.com/package/midi-note?activeTab=readme)
