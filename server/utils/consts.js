@@ -22,6 +22,7 @@ export const intervalSemiTones = new Map([
   ['perfect fourth', 5],
   ['diminished fifth', 6],
   ['perfect fifth', 7],
+  ['augmented fifth', 8],
   ['minor sixth', 8],
   ['major sixth', 9],
   ['minor seventh', 10],
@@ -31,5 +32,12 @@ export const intervalSemiTones = new Map([
 
 export const chordsIntervals = new Map([
   ['maj', ['tonic', 'major third', 'perfect fifth']],
-  ['min', ['tonic', 'minor third', 'perfect fifth']]
+  ['min', ['tonic', 'minor third', 'perfect fifth']],
+  ['dim', ['tonic', 'minor third', 'diminished fifth']],
+  ['aug', ['tonic', 'major third', 'augmented fifth']],
+  ['maj7', ['tonic', 'major third', 'perfect fifth', 'major seventh']],
+  ['7', ['tonic', 'major third', 'perfect fifth', 'minor seventh']],
+  ['min7', ['tonic', 'minor third', 'perfect fifth', 'minor seventh']],
+  ['dim7', ['tonic', 'minor third', 'diminished fifth', 'major sixth']],
+  ['m7b5', ['tonic', 'minor third', 'diminished fifth', 'minor seventh']]
 ])
