@@ -1,10 +1,16 @@
 .my-piano {
     pointer-events: none;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
 } 
 
-.chord-name {
+.chord-label {
     padding-top: 10px;
     font-weight: bold;
+}
+
+.chord-notes {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
