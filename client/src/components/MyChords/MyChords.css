@@ -1,8 +1,5 @@
 .my-chords {
     display: flex;
-}
-
-.active {
-    color: white;
-    background-color: red;
+    width: 50%;
+    justify-content: space-between;
 }
