@@ -1,5 +1,6 @@
-const express = require('express')
-const midiToNote = require('midi-note')
+import express from 'express'
+import midiToNote from 'midi-note'
+import { getMidiChord } from './utils/getMidiChord.js'
 
 const PORT = /* process.env.PORT || */ 3001
 
@@ -9,26 +10,21 @@ app.get('/api', (req, res) => {
   res.json({ message: 'Hi from api' })
 })
 
-app.get('/api/chord/C', (req, res) => {
-  const midiNotes = [60, 64, 67]
-  const notes = midiNotes.map((midi) => midiToNote(midi))
+// get chord from root+type (example : root=C type=maj)
+app.get('/api/chord/:rootNote/:chordType', (req, res) => {
+  const rootNote = req.params.rootNote
+  const chordType = req.params.chordType
+  const midiChord = getMidiChord(rootNote, chordType)
+
+  const notes = midiChord.map((midi) => midiToNote(midi))
 
   res.json({
-    name: 'C',
-    notes,
-    midiNotes
+    label: rootNote + chordType,
+    midiChord,
+    notes
   })
-})
-
-app.get('/api/chord/', (req, res) => {
-  res.json({ midiNotes: [] })
 })
 
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`)
 })
-
-/*
-var note = require('midi-note')
-note(69) // => 'A4'
-*/

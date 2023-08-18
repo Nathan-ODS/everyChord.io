@@ -1,5 +1,6 @@
 {
   "name": "react-app",
+  "type": "module",
   "version": "1.0.0",
   "description": "starting point for node-react-app",
   "main": "index.js",

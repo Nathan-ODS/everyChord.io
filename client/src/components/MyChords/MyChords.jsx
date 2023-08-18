@@ -3,8 +3,14 @@ import "./MyChords.css"
 
 import ChordButton from '../ChordButton/ChordButton'
 
+const chords = [
+    { root: 'C', type: 'maj', label: 'C' },
+    { root: 'C', type: 'min', label: 'Cm' },
+    { root: 'E', type: 'maj', label: 'E' },
+    { root: 'E', type: 'min', label: 'Em' }
+]
+
 const MyChords = ({ activeChord, onChordChange }) => {
-    const chords = ["C", "A", "D", "G"];
 
     const handleChordClick = (chord) => {
         onChordChange(chord)
@@ -14,15 +20,12 @@ const MyChords = ({ activeChord, onChordChange }) => {
         <div className='my-chords'>
             {chords.map((chord) => (
                 <ChordButton
-                    key={chord}
+                    key={chord.label}
                     onClick={() => handleChordClick(chord)}
-                    label={chord}
+                    label={chord.label}
                     isActive={activeChord === chord ? true : false}
                 />
             ))}
-            <ChordButton
-                    onClick={() => { }}
-                />
         </div>
     )
 }

@@ -4,46 +4,47 @@ import 'react-piano/dist/styles.css';
 import "./MyPiano.css";
 
 const MyPiano = ({activeChord}) => {
-  const firstNote = MidiNumbers.fromNote('c3');
-  const lastNote = MidiNumbers.fromNote('c5');
+  // piano range config
+  const firstNote = MidiNumbers.fromNote('f3');
+  const lastNote = MidiNumbers.fromNote('c6');
 
   const noteRange = {
     first: firstNote,
     last: lastNote,
   };
 
-  const [activeMidiNotes, setActiveMidiNotes] = useState([]);
+  // react hooks
   const [activeNotes, setActiveNotes] = useState([]);
+  const [activeMidiChord, setActiveMidiChord] = useState([]);
 
   useEffect(() => {
     async function fetchChord() {
       try {
-        const res = await fetch(`/api/chord/${activeChord}`);
+        const res = await fetch(`/api/chord/${activeChord?.root}/${activeChord?.type}`);
         const data = await res.json();
 
-        setActiveMidiNotes(data.midiNotes);
         setActiveNotes(data.notes);
+        setActiveMidiChord(data.midiChord);
       } catch (error) {
         console.error("Error fetching", error);
         setActiveNotes([]);
-        setActiveMidiNotes([]);
+        setActiveMidiChord([]);
       }
     }
 
-    fetchChord();
+    if(activeChord) fetchChord();
   }, [activeChord])
 
   return (
     <div className="my-piano">
-      <span>{activeMidiNotes}</span>
       <span>{activeNotes}</span>
-      <span className="chord-name">{activeChord}</span>
+      <span className="chord-name">{activeChord?.label}</span>
       <Piano
         noteRange={noteRange}
         width={700}
         playNote={() => { }}
         stopNote={() => { }}
-        activeNotes={activeMidiNotes || []}
+        activeNotes={activeMidiChord || []}
         // disabled={true}
       />
     </div>

@@ -1,0 +1,35 @@
+export const chromaticScaleMidi = new Map([
+  ['C', 60],
+  ['Db', 61],
+  ['D', 62],
+  ['Eb', 63],
+  ['E', 64],
+  ['F', 65],
+  ['Gb', 66],
+  ['G', 67],
+  ['Ab', 68],
+  ['A', 69],
+  ['Bb', 70],
+  ['B', 71]
+])
+
+export const intervalSemiTones = new Map([
+  ['tonic', 0],
+  ['minor second', 1],
+  ['major second', 2],
+  ['minor third', 3],
+  ['major third', 4],
+  ['perfect fourth', 5],
+  ['diminished fifth', 6],
+  ['perfect fifth', 7],
+  ['minor sixth', 8],
+  ['major sixth', 9],
+  ['minor seventh', 10],
+  ['major seventh', 11],
+  ['octave', 12]
+])
+
+export const chordsIntervals = new Map([
+  ['maj', ['tonic', 'major third', 'perfect fifth']],
+  ['min', ['tonic', 'minor third', 'perfect fifth']]
+])

@@ -16,4 +16,5 @@ You can :
 - [Piano chord API](https://pianoapi.jsdisco.dev/)
 - [Piano React Component](https://www.kevinqi.com/react-piano/)
 - [sampler](https://github.com/danigb/smplr)
-- [midi-note](https://www.npmjs.com/package/midi-note?activeTab=readme)
+- [midi-note](https://www.npmjs.com/package/midi-note?activeTab=readme) [source](https://www.inspiredacoustics.com/en/MIDI_note_numbers_and_center_frequencies)
+- [all-chords](https://www.pianote.com/blog/all-piano-chords/)

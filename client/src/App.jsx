@@ -5,7 +5,7 @@ import "./App.css";
 
 // Main App
 function App() {
-  const [activeChord, setActiveChord] = useState('');
+  const [activeChord, setActiveChord] = useState(undefined);
 
   const handleChordChange = (chord) => {
     setActiveChord(chord);
