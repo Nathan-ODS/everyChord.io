@@ -5,8 +5,11 @@ const ChordButton = ({
     label = 'label',
     onClick,
     isActive = false,
+    className = 'chord-button'
 }) => {
-    const className = isActive ? 'chord-button active' : 'chord-button'
+    if(isActive) {
+        className+= ' active'
+    }
 
     return (
         <div className={className} onClick={onClick}>

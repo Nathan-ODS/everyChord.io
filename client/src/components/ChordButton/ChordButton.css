@@ -1,25 +1,28 @@
 .chord-button {
-    height: 60px;
-    width: 60px;
+    user-select: none;
+    height: 65px;
+    width: 65px;
 
-    border: 1px solid;
-    border-radius: 50px;
-    border-color: black;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
-
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
 
+    border-radius: 50px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+
     background-color: white;
+    color: black;
 }
 
 .chord-button:hover {
-    background-color:#3098a8;
+    background-color:#4808f7;
+    color:white;
+    box-shadow: 0 0 10px rgb(255, 255, 255);
 }
 
 .active {
     color: white;
-    background-color:#3ac8da;
+    background-color:#f1c6e5;
+    box-shadow: 0 0 5px rgb(255, 255, 255);
 }
 

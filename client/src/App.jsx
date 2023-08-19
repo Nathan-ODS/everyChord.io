@@ -1,22 +1,18 @@
 import React, {useState} from "react";
 import MyPiano from "./components/MyPiano/MyPiano"
-import MyChords from './components/MyChords/MyChords'
+import ChordsMenu from './components/ChordsMenu/ChordsMenu'
 import "./App.css";
 
 // Main App
 function App() {
   const [activeChord, setActiveChord] = useState(undefined);
 
-  const handleChordChange = (chord) => {
-    setActiveChord(chord);
-  }
-
   return (
     <div className="App">
-        <div className="chords-container">
-          <MyChords
+        <div className="chords-menu-container">
+          <ChordsMenu
             activeChord={activeChord}
-            onChordChange={handleChordChange}
+            onChordChange={setActiveChord}
           />
         </div>
         <div className="piano-container">

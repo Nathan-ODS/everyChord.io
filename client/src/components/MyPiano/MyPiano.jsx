@@ -48,7 +48,7 @@ const MyPiano = ({activeChord}) => {
       />
       <span className="chord-label">{activeChord?.label}</span>
       <span className="chord-notes">
-        {activeNotes.map((note) => <p>{note}</p>)}
+        {activeNotes.map((note) => <p key={note}>{note}</p>)}
       </span>
     </div>
   );
