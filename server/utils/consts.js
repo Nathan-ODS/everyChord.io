@@ -13,6 +13,21 @@ export const chromaticScaleMidi = new Map([
   ['B', 71]
 ])
 
+export const roots = [
+  'C',
+  'Db',
+  'D',
+  'Eb',
+  'E',
+  'F',
+  'Gb',
+  'G',
+  'Ab',
+  'A',
+  'Bb',
+  'B'
+]
+
 export const intervalSemiTones = new Map([
   ['tonic', 0],
   ['minor second', 1],
@@ -39,5 +54,29 @@ export const chordsIntervals = new Map([
   ['7', ['tonic', 'major third', 'perfect fifth', 'minor seventh']],
   ['min7', ['tonic', 'minor third', 'perfect fifth', 'minor seventh']],
   ['dim7', ['tonic', 'minor third', 'diminished fifth', 'major sixth']],
-  ['m7b5', ['tonic', 'minor third', 'diminished fifth', 'minor seventh']]
+  ['min7b5', ['tonic', 'minor third', 'diminished fifth', 'minor seventh']]
 ])
+
+export const typesLabels = new Map([
+  ['maj', ''],
+  ['min', 'm'],
+  ['dim', 'dim'],
+  ['aug', 'aug'],
+  ['maj7', 'maj7'],
+  ['7', '7'],
+  ['min7', 'm7'],
+  ['dim7', 'dim7'],
+  ['min7b5', 'm7b5']
+])
+
+export const types = [
+  'maj',
+  'min',
+  'dim',
+  'aug',
+  'maj7',
+  '7',
+  'min7',
+  'dim7',
+  'min7b5'
+]

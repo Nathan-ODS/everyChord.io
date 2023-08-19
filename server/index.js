@@ -1,5 +1,6 @@
 import express from 'express'
 import midiToNote from 'midi-note'
+import { types, typesLabels, roots } from './utils/consts.js'
 import { getMidiChord } from './utils/getMidiChord.js'
 
 const PORT = /* process.env.PORT || */ 3001
@@ -8,6 +9,24 @@ const app = express()
 
 app.get('/api', (req, res) => {
   res.json({ message: 'Hi from api' })
+})
+
+app.get('/api/types', (req, res) => {
+  // needed because can't send Map() in JSON
+  const typesLabelsObject = {}
+
+  for (const [key, value] of typesLabels) {
+    typesLabelsObject[key] = value
+  }
+
+  res.json({
+    types,
+    typesLabelsObject
+  })
+})
+
+app.get('/api/roots', (req, res) => {
+  res.json({ roots })
 })
 
 // get chord from root+type (example : root=C type=maj)
