@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Planet } from 'react-planet';
 import "./ChordsMenu.css";
 
 import ChordButton from '../ChordButton/ChordButton'
-import ChordTypes from './ChordTypeBubbles/ChordType';
 
 // const chords = { root: 'C', type: 'maj', label: 'C' };
 
 const ChordsMenu = ({ activeChord, onChordChange }) => {
+  const primaryButtonRef = useRef(null)
 
   const [activeRoot, setActiveRoot] = useState('C');
   const [activeType, setActiveType] = useState('maj');
@@ -50,13 +50,14 @@ const ChordsMenu = ({ activeChord, onChordChange }) => {
     </b>
   )
 
+  primaryButtonRef.current = PrimaryButton({label: activeChord?.label});
 
   return (
     <div className='chords-menu'>
       <Planet
-        centerContent={<PrimaryButton label={activeChord?.label} />}
+        centerContent={primaryButtonRef.current}
         open={true}
-        orbitRadius={300}
+        orbitRadius={150}
         bounceOnOpen={false}
         bounceOnClose={false}
         hideOrbit
@@ -68,10 +69,29 @@ const ChordsMenu = ({ activeChord, onChordChange }) => {
             label={root}
             onClick={() => setActiveRoot(root)}
             isActive={root === activeRoot}
+            className='root-button'
           />
         ))}
       </Planet>
 
+      <Planet
+        centerContent={primaryButtonRef.current}
+        open={true}
+        orbitRadius={250}
+        bounceOnOpen={false}
+        bounceOnClose={false}
+        hideOrbit
+        dragableSatellites={true}
+      >
+        {types.map((type) => (
+          <ChordButton
+            key={type}
+            label={activeRoot+typesLabels[type]}
+            onClick={() => setActiveType(type)}
+            isActive={type === activeType}
+          />
+        ))}
+      </Planet>
     </div>
   )
 }

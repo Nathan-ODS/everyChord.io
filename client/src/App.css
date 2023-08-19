@@ -11,13 +11,13 @@
   justify-content: center;
   width: 100vw;
   flex: 1;
-  background-color: #00000096;
+  background-color: #000000;
 }
 
 .piano-container {
   align-items: center;
   width: 100vw;
-  flex: 2;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -1,8 +1,28 @@
 .primary-button {
-    height: 80px;
-    width: 80px;
+    height: 100px;
+    width: 100px;
 
     font-size: large;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+    border-color: black;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.638);
+
+    color: white;
+    background-color:#3ac8da;
+}
+
+.primary-button:hover {
+    background-color:#2a909d;
+}
+
+.root-button {
+    height: 40px;
+    width: 40px;
 
     display: inline-flex;
     justify-content: center;
@@ -13,9 +33,9 @@
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.638);
 
     color: white;
-    background-color:#2e059e;
+    background-color:#2ead84;
 }
 
-.primary-button:hover {
-    background-color:#4808f7;
+.root-button:hover {
+    background-color:#299e79;
 }
