@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Planet } from 'react-planet';
+import { FaSpinner } from 'react-icons/fa';
 import "./ChordsMenu.css";
 
 import ChordButton from '../ChordButton/ChordButton'
@@ -43,7 +44,10 @@ const ChordsMenu = ({ activeChord, onChordChange }) => {
     }
   }, [activeChord, activeRoot, activeType, onChordChange, typesLabels]);
 
-  const PrimaryButton = ChordButton({ label: activeChord?.label || 'loading...', className: 'primary-button', onClick: () => setAreRootsDisplayed(!areRootsDisplayed) });
+  const PrimaryButton = activeChord?.label.includes('undefined') 
+  ? ChordButton({ childElement: <FaSpinner className='spinner' />, className: 'primary-button primary-button--loading'})
+  : ChordButton({ label: activeChord?.label, className: 'primary-button', onClick: () => setAreRootsDisplayed(!areRootsDisplayed) });
+
   return (
     <section className='chords-menu'>
       <div className='primary-button-container'>
@@ -54,6 +58,7 @@ const ChordsMenu = ({ activeChord, onChordChange }) => {
           <Planet
             open={areRootsDisplayed}
             orbitRadius={120}
+            rotation={165}
             hideOrbit
             dragableSatellites={true}
             bounceRadius={1}
@@ -73,7 +78,7 @@ const ChordsMenu = ({ activeChord, onChordChange }) => {
         <div className='type-orbit-container'>
           <Planet
             open={true}
-            orbitRadius={210}
+            orbitRadius={areRootsDisplayed ? 210 : 120}
             rotation={160}
             hideOrbit
             dragableSatellites={true}

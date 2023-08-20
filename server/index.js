@@ -36,9 +36,8 @@ app.get('/api/chord/:rootNote/:chordType', (req, res) => {
   const midiChord = getMidiChord(rootNote, chordType)
 
   const notes = midiChord.map((midi) => midiToNote(midi))
-
   res.json({
-    label: rootNote + typesLabels[chordType],
+    label: rootNote + typesLabels.get(chordType),
     midiChord,
     notes
   })

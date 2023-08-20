@@ -62,3 +62,16 @@
 .chord-button.type-button.active {
     background-color:#65e2f3
 }
+
+.spinner {
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

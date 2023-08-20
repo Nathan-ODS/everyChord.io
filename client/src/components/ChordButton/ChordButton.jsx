@@ -2,7 +2,8 @@ import React from 'react';
 import './ChordButton.css';
 
 const ChordButton = ({
-    label = 'label',
+    label,
+    childElement,
     onClick,
     isActive = false,
     className = 'chord-button'
@@ -13,7 +14,7 @@ const ChordButton = ({
 
     return (
         <span className={'chord-button '+className} onClick={onClick}>
-           {label}
+           {label || childElement}
         </span>
     )
 }
