@@ -58,7 +58,7 @@ export const chordsIntervals = new Map([
 ])
 
 export const typesLabels = new Map([
-  ['maj', ''],
+  ['maj', ' '],
   ['min', 'm'],
   ['dim', 'dim'],
   ['aug', 'aug'],

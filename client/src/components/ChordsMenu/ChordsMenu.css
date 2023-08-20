@@ -1,41 +1,64 @@
-.primary-button {
-    height: 100px;
-    width: 100px;
+.chords-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.orbits-container {
+    position:absolute !important;
+}
+
+.root-orbit-container--hidden{
+    transition: opacity 0.2s ease-out; /* CSS transition for smooth fade */
+    pointer-events: none;
+    opacity: 0;
+}
+
+
+.chord-button.primary-button {
+    height: 80px;
+    width: 80px;
 
     font-size: large;
 
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-
-    border-radius: 50%;
-    border-color: black;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.638);
-
     color: white;
     background-color:#3ac8da;
+
+    z-index: 1;
 }
 
-.primary-button:hover {
-    background-color:#2a909d;
+.chord-button.primary-button:hover {
+    background-color:#35b5c6;
 }
 
-.root-button {
-    height: 40px;
-    width: 40px;
-
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+.chord-button.root-button {
+    height: 50px;
+    width: 50px;
 
     border-radius: 50px;
-    border-color: black;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.638);
 
     color: white;
     background-color:#2ead84;
 }
 
-.root-button:hover {
+.chord-button.root-button:hover {
     background-color:#299e79;
+}
+
+.chord-button.root-button.active {
+    background-color:#62d5b1;
+}
+
+.chord-button.type-button {
+    background-color:#3ac8da ;
+    color: white;
+}
+
+.chord-button.type-button:hover {
+    background-color:#27a5b6 ;
+}
+
+.chord-button.type-button.active {
+    background-color:#65e2f3
 }

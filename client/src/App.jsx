@@ -5,7 +5,7 @@ import "./App.css";
 
 // Main App
 function App() {
-  const [activeChord, setActiveChord] = useState(undefined);
+  const [activeChord, setActiveChord] = useState({root:'C', type:'maj', label:'C'});
 
   return (
     <div className="App">

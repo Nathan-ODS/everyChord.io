@@ -12,9 +12,9 @@ const ChordButton = ({
     }
 
     return (
-        <div className={className} onClick={onClick}>
+        <span className={'chord-button '+className} onClick={onClick}>
            {label}
-        </div>
+        </span>
     )
 }
 
