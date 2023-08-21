@@ -65,8 +65,8 @@ export const typesLabels = new Map([
   ['maj7', 'maj7'],
   ['7', '7'],
   ['min7', 'm7'],
-  ['dim7', 'dim7'],
-  ['min7b5', 'm7b5']
+  ['min7b5', 'm7b5'],
+  ['dim7', 'dim7']
 ])
 
 export const types = [
@@ -77,6 +77,6 @@ export const types = [
   'maj7',
   '7',
   'min7',
-  'dim7',
-  'min7b5'
+  'min7b5',
+  'dim7'
 ]
