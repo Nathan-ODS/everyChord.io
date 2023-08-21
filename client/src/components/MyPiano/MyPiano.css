@@ -4,11 +4,6 @@
     flex-direction: column;
 } 
 
-.chord-label {
-    padding-top: 10px;
-    font-weight: bold;
-}
-
 .chord-notes {
     display: flex;
     justify-content: center;

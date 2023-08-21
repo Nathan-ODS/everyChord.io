@@ -49,7 +49,8 @@ const ChordsMenu = ({ activeChord, onChordChange }) => {
   : ChordButton({ label: activeChord?.label, className: 'primary-button', onClick: () => setAreRootsDisplayed(!areRootsDisplayed) });
 
   return (
-    <section className='chords-menu'>
+    <div className='chords-menu'>
+      <span className='info'>Hello uwu</span>
       <div className='primary-button-container'>
         {PrimaryButton}
       </div>
@@ -95,7 +96,7 @@ const ChordsMenu = ({ activeChord, onChordChange }) => {
           </Planet>
         </div>
       </div>
-    </section>
+    </div>
   )
 }
 

@@ -9,17 +9,17 @@ function App() {
 
   return (
     <div className="App">
-        <div className="chords-menu-container">
+        <section className="chords-menu-container">
           <ChordsMenu
             activeChord={activeChord}
             onChordChange={setActiveChord}
           />
-        </div>
-        <div className="piano-container">
+        </section>
+        <section className="piano-container">
           <MyPiano
             activeChord={activeChord}
           />
-        </div>
+        </section>
     </div>
   );
 }

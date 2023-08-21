@@ -37,16 +37,13 @@ const MyPiano = ({activeChord}) => {
 
   return (
     <div className="my-piano">
-      
       <Piano
         noteRange={noteRange}
         width={700}
         playNote={() => { }}
         stopNote={() => { }}
         activeNotes={activeMidiChord}
-        // disabled={true}
       />
-      <span className="chord-label">{activeChord?.label}</span>
       <span className="chord-notes">
         {activeNotes.map((note) => <p key={note}>{note}</p>)}
       </span>
