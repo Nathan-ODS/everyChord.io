@@ -4,6 +4,12 @@ import { SplendidGrandPiano, CacheStorage } from "smplr";
 import 'react-piano/dist/styles.css';
 import "./MyPiano.css";
 
+const LoadPianoAudioButton = ({ onClick }) => (
+  <div className='load-piano-button'>
+    <button onClick={onClick}>Load Piano</button>
+  </div>
+);
+
 const MyPiano = ({ activeChord }) => {
   const [pianoAudio, setPianoAudio] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -11,6 +17,15 @@ const MyPiano = ({ activeChord }) => {
   const [activeNotes, setActiveNotes] = useState([]);
   const [activeMidiChord, setActiveMidiChord] = useState([]);
 
+  const firstNote = MidiNumbers.fromNote('f3');
+  const lastNote = MidiNumbers.fromNote('c6');
+
+  const noteRange = {
+    first: firstNote,
+    last: lastNote,
+  };
+
+  // Piano Audio setup
   const setupPiano = async () => {
     try {
       const context = new AudioContext();
@@ -24,35 +39,17 @@ const MyPiano = ({ activeChord }) => {
     }
   };
 
+  // Change Piano Audio Loading
   useEffect(() => {
     if (!pianoAudio) {
       // Piano is not loaded, so show a "Load Piano" button
       setIsLoading(true);
-    } else {
-      // Piano is loaded, you can start playing notes here if needed
-      // For example, playChord(activeChord);
     }
   }, [pianoAudio]);
 
-  const playChord = (activeChord) => {
-    // Example: Play a chord with a specific note, velocity, time, and duration
-    if (pianoAudio) {
-      pianoAudio.start({ note: "C4", velocity: 80, time: 5, duration: 1 });
-    }
-  };
-
-  const handleLoadPiano = () => {
-    console.log('yes')
+  function handleLoadPiano() {
     setIsLoading(true);
     setupPiano();
-  };
-
-  const firstNote = MidiNumbers.fromNote('f3');
-  const lastNote = MidiNumbers.fromNote('c6');
-
-  const noteRange = {
-    first: firstNote,
-    last: lastNote,
   };
 
   useEffect(() => {
@@ -72,24 +69,37 @@ const MyPiano = ({ activeChord }) => {
 
     if (activeChord) {
       fetchChord();
-      if (pianoAudio) playChord(activeChord);
     }
   }, [activeChord, pianoAudio]);
+
+  useEffect(() => {
+    function playChord(activeNotes) {
+      if (pianoAudio) {
+        activeNotes.forEach((note) => {
+          pianoAudio.start({ note: note, velocity: 50 });
+        });
+      }
+    };
+    if (activeNotes && pianoAudio) {
+      pianoAudio.stop()
+      playChord(activeNotes)
+    }
+  },[activeNotes, pianoAudio]);
 
   return (
     <div className="my-piano">
       <Piano
         noteRange={noteRange}
         width={700}
-        playNote={() => { pianoAudio?.start({ note: "C4", velocity: 80, time: 5, duration: 1 }); }}
-        stopNote={() => { }}
+        playNote={( ) => { }}
+        stopNote={( ) => { }}
         activeNotes={activeMidiChord}
       />
       <span className="chord-notes">
         {activeNotes.map((note) => <p key={note}>{note}</p>)}
       </span>
       <p>{isLoading ? 'loading...' : 'loaded'}</p>
-      {!pianoAudio && <button onClick={handleLoadPiano}>Load Piano</button>}
+      {!pianoAudio && <LoadPianoAudioButton onClick={handleLoadPiano} />}
     </div>
   );
 }
