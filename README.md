@@ -13,7 +13,6 @@ You can :
 - open side-terminal then `cd client` then `npm start` to start your React app
 
 # External stuffed used
-- [Piano chord API](https://pianoapi.jsdisco.dev/)
 - [Piano React Component](https://www.kevinqi.com/react-piano/)
 - [sampler](https://github.com/danigb/smplr)
 - [midi-note](https://www.npmjs.com/package/midi-note?activeTab=readme) [source](https://www.inspiredacoustics.com/en/MIDI_note_numbers_and_center_frequencies)
