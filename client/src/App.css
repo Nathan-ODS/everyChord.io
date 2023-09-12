@@ -13,6 +13,7 @@
   height: 100vh;
   flex: 1;
   background-color: rgba(2, 87, 97, 0.34);
+  min-width: 500px;
 }
 
 .chords-menu-info {

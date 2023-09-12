@@ -10,9 +10,9 @@ const LoadPianoAudioButton = ({ onClick }) => (
   </div>
 );
 
-const MyPiano = ({ activeChord }) => {
+const MyPiano = ({ activeChord, playSameChord }) => {
   const [pianoAudio, setPianoAudio] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [activeNotes, setActiveNotes] = useState([]);
   const [activeMidiChord, setActiveMidiChord] = useState([]);
@@ -38,14 +38,6 @@ const MyPiano = ({ activeChord }) => {
       console.error('Error setting up piano:', error);
     }
   };
-
-  // Change Piano Audio Loading
-  useEffect(() => {
-    if (!pianoAudio) {
-      // Piano is not loaded, so show a "Load Piano" button
-      setIsLoading(true);
-    }
-  }, [pianoAudio]);
 
   function handleLoadPiano() {
     setIsLoading(true);
@@ -80,26 +72,35 @@ const MyPiano = ({ activeChord }) => {
         });
       }
     };
-    if (activeNotes && pianoAudio) {
-      pianoAudio.stop()
-      playChord(activeNotes)
+
+    if (pianoAudio) {
+      pianoAudio.stop();
     }
-  },[activeNotes, pianoAudio]);
+
+    if (activeNotes && pianoAudio) {
+      playChord(activeNotes);
+    }
+
+  }, [activeNotes, pianoAudio]);
 
   return (
     <div className="my-piano">
       <Piano
         noteRange={noteRange}
         width={700}
-        playNote={( ) => { }}
-        stopNote={( ) => { }}
+        playNote={() => { }}
+        stopNote={() => { }}
         activeNotes={activeMidiChord}
       />
       <span className="chord-notes">
         {activeNotes.map((note) => <p key={note}>{note}</p>)}
       </span>
-      <p>{isLoading ? 'loading...' : 'loaded'}</p>
-      {!pianoAudio && <LoadPianoAudioButton onClick={handleLoadPiano} />}
+      {!pianoAudio && isLoading
+        ? <div> Loading... </div>
+        : !pianoAudio
+          ? <LoadPianoAudioButton onClick={handleLoadPiano} />
+          : <></>
+      }
     </div>
   );
 }
