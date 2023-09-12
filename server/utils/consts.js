@@ -74,9 +74,9 @@ export const types = [
   'min',
   'dim',
   'aug',
-  'maj7',
-  '7',
-  'min7',
+  'dim7',
   'min7b5',
-  'dim7'
+  'min7',
+  '7',
+  'maj7',
 ]

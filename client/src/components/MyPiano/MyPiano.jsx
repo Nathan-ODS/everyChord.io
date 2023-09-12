@@ -75,7 +75,6 @@ const MyPiano = ({ activeChord }) => {
   
     const debouncedPlayPiano = debounce(() => {
       if (activeNotes && pianoAudio) {
-        console.log('playing')
         playPiano();
       }
     }, 30);
