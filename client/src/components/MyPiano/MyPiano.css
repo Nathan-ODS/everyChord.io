@@ -1,18 +1,14 @@
 .my-piano {
-    pointer-events: none;
     display: flex;
     flex-direction: column;
 } 
+
+.ReactPiano__Keyboard {
+    pointer-events: none;
+}
 
 .chord-notes {
     display: flex;
     justify-content: center;
     gap: 10px;
-}
-
-.load-piano-button {
-    pointer-events: all;
-    display: flex;
-    justify-content: flex-end;
-    z-index:2;
 }
