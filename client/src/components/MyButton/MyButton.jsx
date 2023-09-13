@@ -1,10 +1,10 @@
 import React from 'react';
 import "./MyButton.css";
 
-const MyButton = ({onClick, label, childElement}) => {
+const MyButton = ({onClick, label, childElement, className}) => {
     if (!(label || childElement)) label = 'Default'
     return (
-        <span className={'my-button'} onClick={onClick}>
+        <span className={className ? 'my-button '+className : 'my-button'} onClick={onClick}>
            {label || childElement}
         </span>
     );

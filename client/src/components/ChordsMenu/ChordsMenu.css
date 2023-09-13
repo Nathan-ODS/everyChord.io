@@ -36,7 +36,9 @@
 }
 
 .chord-button.primary-button:hover {
+    cursor: pointer;
     background-color:#35b5c6;
+
 }
 
 .chord-button.root-button {
@@ -67,5 +69,5 @@
 }
 
 .chord-button.type-button.active {
-    background-color:#65e2f3
+    background-color:#9065f3
 }

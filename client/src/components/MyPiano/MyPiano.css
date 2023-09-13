@@ -3,7 +3,10 @@
     flex-direction: column;
     gap: 20px;
 
-    justify-content: space-evenly;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    width: 100%
 }
 
 .my-piano__content {
@@ -11,7 +14,23 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100px;
+    width: 300px;
+    
+    color: white;
+    background-color: #272829;
+    border-radius: 8px;
 }
+
+.load-button--loading{
+    padding: 8px;
+}
+
+.my-piano__piano-container {
+    display: flex;
+}
+
+
 
 .ReactPiano__Keyboard {
     pointer-events: none;

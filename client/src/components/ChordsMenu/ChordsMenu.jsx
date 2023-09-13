@@ -50,7 +50,6 @@ const ChordsMenu = ({ activeChord, onChordChange }) => {
 
   return (
     <div className='chords-menu'>
-      <span className='info'>Hello uwu</span>
       <div className='primary-button-container'>
         {PrimaryButton}
       </div>

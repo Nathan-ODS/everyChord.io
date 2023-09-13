@@ -91,13 +91,15 @@ const MyPiano = ({ activeChord }) => {
   return (
     <div className="my-piano">
       <div className="my-piano__content">
-      <span className="chord-notes">
-        {activeNotes.map((note) => <p key={note}>{note}</p>)}
-      </span>
+        <span className="chord-notes">
+          {activeNotes.map((note) => <p key={note}>{note}</p>)}
+        </span>
+      </div>
       {!pianoAudio
         && <div className="load-button-container">
           {
             <MyButton
+              className={isLoading ? 'load-button--loading' : 'load-button'}
               label={!isLoading ? 'Load piano audio' : ''}
               onClick={() => {
                 setIsLoading(true)
@@ -107,7 +109,6 @@ const MyPiano = ({ activeChord }) => {
           }
         </div>
       }
-      </div>
       <div className="my-piano__piano-container">
       <Piano
         noteRange={noteRange}
