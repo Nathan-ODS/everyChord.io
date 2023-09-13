@@ -7,11 +7,6 @@
     height: 100%;
 }
 
-.info {
-    position: absolute;
-    top: 0;
-}
-
 .orbits-container {
     position:absolute !important;
 }
@@ -21,7 +16,6 @@
     pointer-events: none;
     opacity: 0;
 }
-
 
 .chord-button.primary-button {
     height: 80px;
@@ -33,11 +27,12 @@
     background-color:#3ac8da;
 
     z-index: 1;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
 }
 
 .chord-button.primary-button:hover {
     cursor: pointer;
-    background-color:#35b5c6;
+    background-color:#76F8FF;
 
 }
 
@@ -48,15 +43,16 @@
     border-radius: 50px;
 
     color: white;
-    background-color:#2ead84;
+    background-color:#937FD7;
+
 }
 
 .chord-button.root-button:hover {
-    background-color:#299e79;
+    background-color:#BFADF0;
 }
 
 .chord-button.root-button.active {
-    background-color:#62d5b1;
+    background-color:#BFADF0;
 }
 
 .chord-button.type-button {
@@ -69,5 +65,5 @@
 }
 
 .chord-button.type-button.active {
-    background-color:#62d5b1;
+    background-color:#76f8ffcc;
 }

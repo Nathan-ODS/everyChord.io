@@ -61,7 +61,7 @@ const ChordsMenu = ({ activeChord, onChordChange }) => {
             rotation={165}
             hideOrbit
             dragableSatellites={true}
-            bounceRadius={1}
+            bounceRadius={0.5}
             bounce={false}
           >
             {roots.map((root) => (
@@ -78,10 +78,13 @@ const ChordsMenu = ({ activeChord, onChordChange }) => {
         <div className='type-orbit-container'>
           <Planet
             open={true}
-            orbitRadius={areRootsDisplayed ? 210 : 120}
+            orbitRadius={areRootsDisplayed ? 200 : 120}
             rotation={160}
             hideOrbit
             dragableSatellites={true}
+            bounceRadius={0}
+            bounce={false}
+            bounceOnOpen={false}
           >
             {types.map((type) => (
               <ChordButton

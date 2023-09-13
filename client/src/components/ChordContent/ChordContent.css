@@ -1,0 +1,38 @@
+.chord-content{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    align-items: center;
+}
+
+.load-button-container {
+    position: absolute;
+    margin-left:auto;
+    right:0;
+}
+
+.load-button--loading{
+    padding: 8px;
+    margin-right: 100px;
+}
+
+.piano-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 40px;
+}
+
+.ReactPiano__Keyboard {
+    margin-top: 50px;
+    pointer-events: none;
+}
+
+.ReactPiano__Keyboard > :first-child{
+    border-top-left-radius: 10px;
+}
+
+.ReactPiano__Keyboard > :last-child{
+    border-top-right-radius: 10px;
+}

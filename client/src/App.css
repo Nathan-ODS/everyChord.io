@@ -1,33 +1,41 @@
 .App {
   display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
-  flex-direction: row;
+  width: 100%;
+  min-width: 1400px;
+
+  background-image: linear-gradient(to right bottom, #5196dd, #5db8d1, #5dc2f4, #7bbcf9, #9ab6f9, #9fb1f5, #a3acf1, #a8a7ed, #95a3ea, #819ee6, #6b9ae2, #5196dd);
+}
+
+.container {
+  position: relative;
+
+  display: flex;
+
+  background-image: linear-gradient(to right bottom, #28292a, #2e2f30, #343535, #3b3b3b, #414141);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+  height: 70vh;
+  min-height: 550px;
+  max-height: 600px;
+  width: 1300px;
+  min-width: 1300px;
+
+  padding: 20px 30px;
+
+  border-radius: 80px;
+
+  overflow: hidden;
 }
 
 .chords-menu-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-
-  height: 100vh;
-  flex: 1;
-  background-color: #272829;
-  min-width: 500px;
+  flex: 2;
 }
 
-.chords-menu-info {
-  color:aliceblue;
-  font-size: large;
-  font-weight: bold;
-}
-
-.piano-container {
-  align-items: center;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.chord-content-container {
+  flex: 3;
 }
 
 .spinner {

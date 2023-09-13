@@ -5,8 +5,9 @@ import debounce from 'lodash/debounce';
 
 import MyButton from "../MyButton/MyButton";
 import 'react-piano/dist/styles.css';
-import "./MyPiano.css";
+import "./ChordContent.css";
 import { FaSpinner } from "react-icons/fa";
+import ChordSummary from "./ChordSummary/ChordSummary";
 
 
 const MyPiano = ({ activeChord }) => {
@@ -89,12 +90,10 @@ const MyPiano = ({ activeChord }) => {
   }, [activeNotes, pianoAudio]);
 
   return (
-    <div className="my-piano">
-      <div className="my-piano__content">
-        <span className="chord-notes">
-          {activeNotes.map((note) => <p key={note}>{note}</p>)}
-        </span>
-      </div>
+    <div className="chord-content">
+      <ChordSummary activeNotes={activeNotes} activeMidiChord={activeMidiChord} activeChordLabel={activeChord?.label}/>
+
+      <div className="piano-container">
       {!pianoAudio
         && <div className="load-button-container">
           {
@@ -109,14 +108,13 @@ const MyPiano = ({ activeChord }) => {
           }
         </div>
       }
-      <div className="my-piano__piano-container">
-      <Piano
-        noteRange={noteRange}
-        width={700}
-        playNote={() => { }}
-        stopNote={() => { }}
-        activeNotes={activeMidiChord}
-      />
+        <Piano
+          noteRange={noteRange}
+          width={750}
+          playNote={() => { }}
+          stopNote={() => { }}
+          activeNotes={activeMidiChord}
+        />
       </div>
     </div>
   );
