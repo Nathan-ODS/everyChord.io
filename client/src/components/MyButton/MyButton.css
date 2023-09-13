@@ -12,6 +12,9 @@
 
     color: white;
     background-color:#3ac8da;
+
+    opacity: 1; 
+    transition: opacity 0.8s ease-in-out; /* Transition effect for opacity */
 }
 
 .my-button:hover {

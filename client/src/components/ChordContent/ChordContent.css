@@ -15,6 +15,7 @@
 .load-button--loading{
     min-width: 123px;
     min-height: 18px;
+    opacity: 0;
 }
 
 .piano-container {
