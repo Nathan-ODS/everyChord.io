@@ -13,8 +13,8 @@
 }
 
 .load-button--loading{
-    padding: 8px;
-    margin-right: 100px;
+    min-width: 123px;
+    min-height: 18px;
 }
 
 .piano-container {
