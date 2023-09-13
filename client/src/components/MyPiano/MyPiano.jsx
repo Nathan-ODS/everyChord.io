@@ -78,7 +78,7 @@ const MyPiano = ({ activeChord }) => {
         pianoAudio.stop()
         playPiano();
       }
-    }, 30);
+    }, 100);
 
     debouncedPlayPiano();
 

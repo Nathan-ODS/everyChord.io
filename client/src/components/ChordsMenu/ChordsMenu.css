@@ -60,14 +60,14 @@
 }
 
 .chord-button.type-button {
-    background-color:#3ac8da ;
+    background-color:#3ac8da;
     color: white;
 }
 
 .chord-button.type-button:hover {
-    background-color:#27a5b6 ;
+    background-color:#27a5b6;
 }
 
 .chord-button.type-button.active {
-    background-color:#9065f3
+    background-color:#62d5b1;
 }
