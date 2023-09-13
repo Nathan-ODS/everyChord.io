@@ -16,7 +16,7 @@ const MyPiano = ({ activeChord }) => {
   const [activeNotes, setActiveNotes] = useState([]);
   const [activeMidiChord, setActiveMidiChord] = useState([]);
 
-  const firstNote = MidiNumbers.fromNote('f3');
+  const firstNote = MidiNumbers.fromNote('a3');
   const lastNote = MidiNumbers.fromNote('c6');
 
   const noteRange = {
@@ -72,15 +72,16 @@ const MyPiano = ({ activeChord }) => {
         pianoAudio.start({ note: note, velocity: 50 });
       });
     };
-  
+
     const debouncedPlayPiano = debounce(() => {
       if (activeNotes && pianoAudio) {
+        pianoAudio.stop()
         playPiano();
       }
     }, 30);
-  
+
     debouncedPlayPiano();
-  
+
     // Cleanup the debounced function on component unmount
     return () => {
       debouncedPlayPiano.cancel();
@@ -89,6 +90,25 @@ const MyPiano = ({ activeChord }) => {
 
   return (
     <div className="my-piano">
+      <div className="my-piano__content">
+      <span className="chord-notes">
+        {activeNotes.map((note) => <p key={note}>{note}</p>)}
+      </span>
+      {!pianoAudio
+        && <div className="load-button-container">
+          {
+            <MyButton
+              label={!isLoading ? 'Load piano audio' : ''}
+              onClick={() => {
+                setIsLoading(true)
+              }}
+              childElement={isLoading ? <FaSpinner className='spinner' /> : undefined}
+            />
+          }
+        </div>
+      }
+      </div>
+      <div className="my-piano__piano-container">
       <Piano
         noteRange={noteRange}
         width={700}
@@ -96,22 +116,7 @@ const MyPiano = ({ activeChord }) => {
         stopNote={() => { }}
         activeNotes={activeMidiChord}
       />
-      <span className="chord-notes">
-        {activeNotes.map((note) => <p key={note}>{note}</p>)}
-      </span>
-      {!pianoAudio
-        && <div className="load-button-container">
-        {
-          !isLoading 
-            ? <MyButton 
-                label={'Load piano audio'}
-                onClick={() => {
-                  setIsLoading(true);
-                }} />
-            : <MyButton childElement={<FaSpinner className="spinner" />} />
-        }
-        </div>
-      }
+      </div>
     </div>
   );
 }
