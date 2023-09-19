@@ -16,7 +16,7 @@
 
   background-image: linear-gradient(to right bottom, #28292a, #2e2f30, #343535, #3b3b3b, #414141);
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-
+  opacity: 0.9;
   height: 70vh;
   min-height: 550px;
   max-height: 600px;

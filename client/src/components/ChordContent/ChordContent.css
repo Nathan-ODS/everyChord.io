@@ -23,6 +23,8 @@
     display: flex;
     flex-direction: column;
     border-radius: 40px;
+
+    padding-bottom: 20px;
 }
 
 .ReactPiano__Keyboard {

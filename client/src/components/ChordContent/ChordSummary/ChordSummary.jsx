@@ -2,11 +2,18 @@ import React from "react";
 import "./ChordSummary.css";
 
 const ChordSummary = ({ activeNotes, activeMidiChord, activeChordLabel }) => {
+
+    console.log(activeNotes);
+
     return (
         <div className="chord-summary">
-            <p>{activeNotes}</p>
-            <p>{activeMidiChord}</p>
-            <p>{activeChordLabel}</p>
+            <div className="label">
+                <span>{activeChordLabel}</span>
+            </div>
+            <div className="notes">
+                <span>{activeNotes}</span>
+                <span>{activeMidiChord}</span>
+            </div>
         </div>
     )
 }

@@ -78,5 +78,5 @@ export const types = [
   'min7b5',
   'min7',
   '7',
-  'maj7',
+  'maj7'
 ]
