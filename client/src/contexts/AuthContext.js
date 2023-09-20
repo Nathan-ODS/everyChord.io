@@ -9,36 +9,33 @@ export function useAuth() {
 export function AuthProvider({ children }) {
     const [user, setUser] = useState(null)
 
-    async function login() {
-        console.log('login in to nathan')
-        const body = {userName: 'nathan', password: '1234'}
-
+    async function login(userName, password) {
         try {
             const res = await fetch('/api/login', {
-                method:'POST',
+                method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
-                  },
-                body: JSON.stringify(body)
+                },
+                body: JSON.stringify({ userName, password })
             });
 
-            if(!res.ok) {
+            if (!res.ok) {
                 console.log('problem with the sent data')
                 return;
             }
 
             const data = res.json();
-            const {token, user} = data;
+            const { token } = data;
 
             localStorage.setItem('token', token);
-            setUser(user)
+            // setUser(user)
         } catch (error) {
             console.error('Login error', error)
         }
     }
 
     function logout() {
-        console.log('login out');
+        console.log('loging out');
         localStorage.removeItem('token');
     }
 
