@@ -2,9 +2,18 @@
 import mongoose from 'mongoose';
 
 const chordSchema = new mongoose.Schema({
-  chordLabel: String,
-  chordNotes: [String],
-  chordMidiNotes: [Number]
+  chordLabel: {
+    type: String,
+    required: true
+  },
+  chordNotes: {
+    type: [String],
+    required: true
+  },
+  chordMidiNotes: {
+    type: [Number],
+    required: true
+  }
 });
 
 const userSchema = new mongoose.Schema({

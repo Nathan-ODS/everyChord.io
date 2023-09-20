@@ -10,7 +10,7 @@ import { FaSpinner } from "react-icons/fa";
 import ChordSummary from "./ChordSummary/ChordSummary";
 
 
-const MyPiano = ({ activeChord }) => {
+const ChordContent = ({ activeChord }) => {
   const [pianoAudio, setPianoAudio] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -120,4 +120,4 @@ const MyPiano = ({ activeChord }) => {
   );
 }
 
-export default MyPiano;
+export default ChordContent;

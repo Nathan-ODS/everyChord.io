@@ -3,8 +3,6 @@ import "./ChordSummary.css";
 
 const ChordSummary = ({ activeNotes, activeMidiChord, activeChordLabel }) => {
 
-    console.log(activeNotes);
-
     return (
         <div className="chord-summary">
             <div className="label">

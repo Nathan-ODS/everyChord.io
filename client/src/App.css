@@ -1,5 +1,7 @@
 .App {
   display: flex;
+  flex-direction: column;
+  gap: 20px;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -7,6 +9,15 @@
   min-width: 1400px;
 
   background-image: linear-gradient(to right bottom, #5196dd, #5db8d1, #5dc2f4, #7bbcf9, #9ab6f9, #9fb1f5, #a3acf1, #a8a7ed, #95a3ea, #819ee6, #6b9ae2, #5196dd);
+}
+
+.user-auth-container {
+  width: 1300px;
+  min-width: 1300px;
+  display: flex;
+  width:auto;
+  position: relative;
+  flex-direction: row-reverse;
 }
 
 .container {
@@ -46,6 +57,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

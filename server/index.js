@@ -1,5 +1,8 @@
 import express from 'express'
+import bodyParser from 'body-parser'
 import midiToNote from 'midi-note'
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 
 import { types, typesLabels, roots } from './utils/consts.js'
 import { getMidiChord } from './utils/getMidiChord.js'
@@ -10,6 +13,9 @@ import connectDB from './db.js'
 
 const PORT = /* process.env.PORT || */ 3001
 const app = express()
+const secretKey = 'commeundejavu2023'
+
+app.use(bodyParser.json())
 
 // connection to the MongoDB
 await connectDB()
@@ -52,8 +58,21 @@ app.get('/api/chord/:rootNote/:chordType', (req, res) => {
 })
 
 // User
-// Creating a new resource
-// app.post('/resources', createResource);
+// Creating a new User
+/*
+app.post('/api/user', async (req, res) => {
+  try {
+    const { userName, userPassword } = req.body
+
+    const isUserNameTaken = await User.exists({ userName })
+
+    if (isUserNameTaken) {
+      res.status(400).json({ error: 'name already taken' })
+    }
+  } catch (error) {
+  }
+})
+*/
 
 // Getting a User by ID
 app.get('/api/user/:id', async (req, res) => {
@@ -64,7 +83,6 @@ app.get('/api/user/:id', async (req, res) => {
 
     if (!user) {
       res.status(404).json({ error: 'user not found' })
-      return
     }
 
     res.json(user)
@@ -75,11 +93,79 @@ app.get('/api/user/:id', async (req, res) => {
   }
 })
 
-// Updating a specific resource by ID
-// router.put('/resources/:id', updateResource);
+// Updating User.personnalChords by ID
+app.put('/api/user/:id', async (req, res) => {
+  const userId = req.params.id
+  const { newPersonnalChord } = req.body
+
+  try {
+    const user = await User.findById(userId, 'personnalChords')
+
+    if (!user) {
+      res.status(404).json({ error: 'user not found' })
+      return
+    }
+
+    user.personnalChords.push(newPersonnalChord)
+
+    const updatedUser = await user.save()
+
+    res.json(updatedUser)
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' })
+  }
+})
 
 // Deleting a specific resource by ID
 // router.delete('/resources/:id', deleteResource);
+
+app.post('/api/login', async (req, res) => {
+  const { userName, password } = req.body
+
+  try {
+    const user = await User.findOne({ userName }, 'userName password personnalChords')
+
+    if (!user) {
+      return res.status(401).json({ message: 'Invalid UserName or Password' })
+    }
+
+    const doesPasswordMatch = await bcrypt.compare(password, user.password)
+
+    if (!doesPasswordMatch) {
+      return res.status(401).json({ message: 'Invalid UserName or Password' })
+    }
+
+    const token = jwt.sign({ userId: user.id, username: user.userName, personnalChords: user.personnalChords }, secretKey, {
+      expiresIn: '1h' // Token expiration time (adjust as needed)
+    })
+
+    res.json(token)
+  } catch (error) {
+    console.error('Error while loging', error)
+  }
+})
+
+app.post('/api/register', async (req, res) => {
+  const { userName, password } = req.body
+  try {
+    const isUserNameTaken = await User.exists({ userName })
+
+    if (isUserNameTaken) {
+      return res.status(401).json({ message: 'UserName is alreay taken' })
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10)
+
+    await User.create({
+      userName,
+      password: hashedPassword
+    })
+
+    res.json({ message: 'User registered successfully' })
+  } catch (error) {
+    console.error('Error while registering new user', error)
+  }
+})
 
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`)
