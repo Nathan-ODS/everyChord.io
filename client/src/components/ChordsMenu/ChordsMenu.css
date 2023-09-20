@@ -1,69 +1,70 @@
 .chords-menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    height: 100%;
+  height: 100%;
 }
 
 .orbits-container {
-    position:absolute !important;
+  position: absolute !important;
 }
 
-.root-orbit-container--hidden{
-    transition: opacity 0.2s ease-out; /* CSS transition for smooth fade */
-    pointer-events: none;
-    opacity: 0;
+.root-orbit-container--hidden {
+  transition: opacity 0.2s ease-out;
+  /* CSS transition for smooth fade */
+  pointer-events: none;
+  opacity: 0;
 }
 
 .chord-button.primary-button {
-    height: 80px;
-    width: 80px;
+  height: 80px;
+  width: 80px;
 
-    font-size: large;
+  font-size: large;
 
-    color: white;
-    background-color:#3ac8da;
+  color: white;
+  background-color: #3ac8da;
 
-    z-index: 1;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+  z-index: 1;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
 }
 
 .chord-button.primary-button:hover {
-    cursor: pointer;
-    background-color:#76F8FF;
+  cursor: pointer;
+  background-color: #27a5b6;
 
 }
 
 .chord-button.root-button {
-    height: 50px;
-    width: 50px;
+  height: 50px;
+  width: 50px;
 
-    border-radius: 50px;
+  border-radius: 50px;
 
-    color: white;
-    background-color:#937FD7;
+  color: white;
+  background-color: #937FD7;
 
 }
 
 .chord-button.root-button:hover {
-    background-color:#BFADF0;
+  background-color: #BFADF0;
 }
 
 .chord-button.root-button.active {
-    background-color:#BFADF0;
+  background-color: #BFADF0;
 }
 
 .chord-button.type-button {
-    background-color:#3ac8da;
-    color: white;
+  background-color: #3ac8da;
+  color: white;
 }
 
 .chord-button.type-button:hover {
-    background-color:#27a5b6;
+  background-color: #27a5b6;
 }
 
 .chord-button.type-button.active {
-    background-color:#76f8ffcc;
+  background-color: #76f8ffcc;
 }
