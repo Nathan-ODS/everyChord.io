@@ -108,7 +108,6 @@ app.get('/api/tokenValidation', async (req, res) => {
 
   try {
     const decodedToken = jwt.verify(token, secretKey)
-    console.log('decodedToken', decodedToken)
 
     const user = await User.findOne({ _id: decodedToken._id }, 'userName personnalChords')
     res.json(user)
