@@ -1,4 +1,5 @@
 /* eslint-disable semi */
+import { ObjectId } from 'mongodb';
 import mongoose from 'mongoose';
 
 const chordSchema = new mongoose.Schema({
@@ -17,6 +18,10 @@ const chordSchema = new mongoose.Schema({
 });
 
 const userSchema = new mongoose.Schema({
+  _id: {
+    type: ObjectId,
+    required: true
+  },
   userName: {
     type: String,
     required: true

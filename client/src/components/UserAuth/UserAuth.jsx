@@ -13,15 +13,16 @@ const UserAuth = () => {
 
   return (
     <>
-      {!user
-        ? <MyButton
-          className='login-signup-button'
-          onClick={() => setIsModalOpened(true)}
-          label='Login or Register'
-        />
-        : <MyButton className='user-profile-button'
-          label={user?.userName}
-        />
+      {
+        !user
+          ? <MyButton
+            className='login-signup-button'
+            onClick={() => setIsModalOpened(true)}
+            label='Login or Register'
+          />
+          : <MyButton className='user-profile-button'
+            label={user?.userName}
+          />
       }
       <Modal
         className={'login-register-modal'}

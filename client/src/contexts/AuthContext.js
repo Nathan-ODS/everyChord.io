@@ -1,47 +1,79 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 const AuthContext = createContext();
 
 export function useAuth() {
-    return useContext(AuthContext);
+  return useContext(AuthContext);
 };
 
 export function AuthProvider({ children }) {
-    const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null)
 
-    async function login(userName, password) {
-        try {
-            const res = await fetch('/api/login', {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ userName, password })
-            });
+  // Check if token is still valid
+  // If so, fetch user
+  useEffect(() => {
+    async function validateToken(token) {
+      const res = await fetch('/api/tokenValidation', {
+        method: 'GET',
+        headers: {
+          'Authorization': storedToken,
+          'Content-Type': 'application/json',
+        },
+      })
 
-            if (!res.ok) {
-                console.log('problem with the sent data')
-                return;
-            }
-
-            const data = res.json();
-            const { token } = data;
-
-            localStorage.setItem('token', token);
-            // setUser(user)
-        } catch (error) {
-            console.error('Login error', error)
-        }
+      if(!res.ok) {
+        // token is invalid
+        const error = await res.json()
+        console.log('logout', error.message)
+        logout()
+        return
+      }
+      
+      const user = await res.json()
+      setUser(user)
     }
 
-    function logout() {
-        console.log('loging out');
-        localStorage.removeItem('token');
+    const storedToken = localStorage.getItem('token');
+    if(storedToken) {
+      validateToken(storedToken)
+    } else {
+      setUser(null)
     }
 
-    return (
-        <AuthContext.Provider value={{ user, login, logout }}>
-            {children}
-        </AuthContext.Provider>
-    )
+  }, []);
+
+  async function login(userName, password) {
+    try {
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userName, password })
+      });
+
+      if (!res.ok) {
+        return
+      }
+
+      const data = await res.json();
+      const { token, user } = data;
+
+      localStorage.setItem('token', token);
+      setUser(user)
+    } catch (error) {
+      console.error('Login error', error)
+    }
+  }
+
+  function logout() {
+    localStorage.removeItem('token');
+    setUser(null)
+  }
+
+  return (
+    <AuthContext.Provider value={{ user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  )
 }

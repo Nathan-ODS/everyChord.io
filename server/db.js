@@ -26,6 +26,13 @@ async function connectDB () {
 
     process.exit(0)
   });
+
+  // Handle unhandled exceptions
+  process.on('uncaughtException', async (err) => {
+    console.error('Uncaught Exception:', err);
+
+    await db.close()
+  });
 }
 
 export default connectDB
