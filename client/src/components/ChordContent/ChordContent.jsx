@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Piano, MidiNumbers } from 'react-piano';
 import { SplendidGrandPiano, CacheStorage } from "smplr";
 import debounce from 'lodash/debounce';
+import { toast } from 'react-toastify';
 
 import MyButton from "../MyButton/MyButton";
 import 'react-piano/dist/styles.css';
@@ -37,6 +38,7 @@ const ChordContent = ({ activeChord }) => {
         console.error('Error setting up piano:', error);
       } finally {
         setIsLoading(false);
+        toast.success('Piano Audio successfully loaded 🎹🎵')
       }
     };
 
