@@ -1,4 +1,5 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 const AuthContext = createContext();
 
@@ -23,8 +24,6 @@ export function AuthProvider({ children }) {
 
       if(!res.ok) {
         // token is invalid
-        const error = await res.json()
-        console.log('logout', error.message)
         logout()
         return
       }
@@ -42,7 +41,7 @@ export function AuthProvider({ children }) {
 
   }, []);
 
-  async function login(userName, password) {
+  async function login(userName, password, setErrorMessage, closeModal) {
     try {
       const res = await fetch('/api/login', {
         method: 'POST',
@@ -53,6 +52,8 @@ export function AuthProvider({ children }) {
       });
 
       if (!res.ok) {
+        const error = await res.json()
+        setErrorMessage(error.message)
         return
       }
 
@@ -61,6 +62,8 @@ export function AuthProvider({ children }) {
 
       localStorage.setItem('token', token);
       setUser(user)
+      closeModal()
+      toast.success('Successfull login')
     } catch (error) {
       console.error('Login error', error)
     }
@@ -69,6 +72,7 @@ export function AuthProvider({ children }) {
   function logout() {
     localStorage.removeItem('token');
     setUser(null)
+    toast.info('Successfull logout')
   }
 
   return (

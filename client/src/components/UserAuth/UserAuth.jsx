@@ -8,8 +8,16 @@ import './UserAuth.css';
 Modal.setAppElement('#root')
 
 const UserAuth = () => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const [isModalOpened, setIsModalOpened] = useState(false);
+
+  function closeModal() {
+    setIsModalOpened(false)
+  }
+
+  function openModal() {
+    setIsModalOpened(true)
+  }
 
   return (
     <>
@@ -17,20 +25,23 @@ const UserAuth = () => {
         !user
           ? <MyButton
             className='login-signup-button'
-            onClick={() => setIsModalOpened(true)}
+            onClick={openModal}
             label='Login or Register'
           />
-          : <MyButton className='user-profile-button'
-            label={user?.userName}
-          />
+          : (
+            <div className='user-profile'>
+              <MyButton className='user-profile-button' label={user?.userName}/>
+              <MyButton className='logout-button' label='Log out' onClick={logout}/>
+            </div>
+          )
       }
       <Modal
         className={'login-register-modal'}
         isOpen={isModalOpened}
-        onRequestClose={() => setIsModalOpened(false)}
+        onRequestClose={closeModal}
         contentLabel='Login and register Modal'
       >
-        <LoginRegisterModalContent />
+        <LoginRegisterModalContent closeModal={closeModal} />
       </Modal>
     </>
   )

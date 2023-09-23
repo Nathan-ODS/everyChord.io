@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, { useState } from "react"
 import ChordContent from "./components/ChordContent/ChordContent"
 import ChordsMenu from './components/ChordsMenu/ChordsMenu'
 import UserAuth from './components/UserAuth/UserAuth'

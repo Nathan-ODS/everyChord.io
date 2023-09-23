@@ -57,48 +57,6 @@ app.get('/api/chord/:rootNote/:chordType', (req, res) => {
   })
 })
 
-// Getting a User by ID
-app.get('/api/user/:id', async (req, res) => {
-  const userId = req.params.id
-
-  try {
-    const user = await User.findById(userId, 'userName personnalChords')
-
-    if (!user) {
-      res.status(404).json({ error: 'user not found' })
-    }
-
-    res.json(user)
-  } catch (error) {
-    // Handle any errors that occur during the database query
-    console.error(error)
-    res.status(500).json({ error: 'Internal Server Error' })
-  }
-})
-
-// Updating User.personnalChords by ID
-app.put('/api/user/:id', async (req, res) => {
-  const userId = req.params.id
-  const { newPersonnalChord } = req.body
-
-  try {
-    const user = await User.findById(userId, 'personnalChords')
-
-    if (!user) {
-      res.status(404).json({ error: 'user not found' })
-      return
-    }
-
-    user.personnalChords.push(newPersonnalChord)
-
-    const updatedUser = await user.save()
-
-    res.json(updatedUser)
-  } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' })
-  }
-})
-
 app.get('/api/tokenValidation', async (req, res) => {
   const token = req.headers.authorization
 

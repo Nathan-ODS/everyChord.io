@@ -18,6 +18,17 @@
   opacity: 0.9;
 }
 
-.login-register-modal{
-  background-color: aqua;
+.login-register-modal {
+  height: 300px;
+  width: 500px;
+  
+  position: absolute;
+  display: flex;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.login-register-modal:focus {
+  outline: none;
 }
