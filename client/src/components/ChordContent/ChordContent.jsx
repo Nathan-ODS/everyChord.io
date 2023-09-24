@@ -93,23 +93,23 @@ const ChordContent = ({ activeChord }) => {
 
   return (
     <div className="chord-content">
-      <ChordSummary activeNotes={activeNotes} activeMidiChord={activeMidiChord} activeChordLabel={activeChord?.label}/>
+      <ChordSummary activeNotes={activeNotes} activeMidiChord={activeMidiChord} activeChordLabel={activeChord?.label} />
 
       <div className="piano-container">
-      {!pianoAudio
-        && <div className="load-button-container">
-          {
-            <MyButton
-              className={isLoading ? 'load-button--loading' : 'load-button'}
-              label={!isLoading ? 'Load piano audio' : ''}
-              onClick={() => {
-                setIsLoading(true)
-              }}
-              childElement={isLoading ? <FaSpinner className='spinner' /> : undefined}
-            />
-          }
-        </div>
-      }
+        {!pianoAudio
+          && <div className="load-button-container">
+            {
+              <MyButton
+                className={isLoading ? 'load-button--loading' : 'load-button'}
+                label={!isLoading ? 'Load piano audio' : ''}
+                onClick={() => {
+                  setIsLoading(true)
+                }}
+                childElement={isLoading ? <FaSpinner className='spinner' /> : undefined}
+              />
+            }
+          </div>
+        }
         <Piano
           noteRange={noteRange}
           width={750}

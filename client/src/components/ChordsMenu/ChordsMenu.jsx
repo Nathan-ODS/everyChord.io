@@ -78,8 +78,8 @@ const ChordsMenu = ({ activeChord, onChordChange }) => {
         <div className='type-orbit-container'>
           <Planet
             open={true}
-            orbitRadius={areRootsDisplayed ? 200 : 120}
-            rotation={160}
+            orbitRadius={areRootsDisplayed ? 200 : 150}
+            rotation={163.5}
             hideOrbit
             dragableSatellites={true}
             bounceRadius={0}

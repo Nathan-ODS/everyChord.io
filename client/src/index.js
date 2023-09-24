@@ -12,8 +12,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <AuthProvider>
         <ToastContainer
-            position="top-left"
-            autoClose={3000}
+            position="top-center"
+            autoClose={1500}
             newestOnTop={false}
             closeOnClick
             rtl={false}

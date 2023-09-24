@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import LoginRegisterModalContent from './LoginRegisterModalContent/LoginRegisterModalContent';
+import {  FaSignOutAlt } from 'react-icons/fa'
 import MyButton from '../MyButton/MyButton';
 import Modal from 'react-modal';
 import './UserAuth.css';
@@ -30,8 +31,10 @@ const UserAuth = () => {
           />
           : (
             <div className='user-profile'>
-              <MyButton className='user-profile-button' label={user?.userName}/>
-              <MyButton className='logout-button' label='Log out' onClick={logout}/>
+              <span>Log out</span>
+              <div className='logout-container' onClick={logout}>
+                <FaSignOutAlt />
+              </div>
             </div>
           )
       }

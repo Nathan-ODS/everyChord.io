@@ -17,7 +17,14 @@
   display: flex;
   width:auto;
   position: relative;
-  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.user-auth-container__welcome-message {
+  font-size:xx-large;
+  font-weight:bolder;
+  color: white;
 }
 
 .container {

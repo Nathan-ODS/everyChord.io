@@ -50,6 +50,8 @@ export const chordsIntervals = new Map([
   ['min', ['tonic', 'minor third', 'perfect fifth']],
   ['dim', ['tonic', 'minor third', 'diminished fifth']],
   ['aug', ['tonic', 'major third', 'augmented fifth']],
+  ['sus2', ['tonic', 'major second', 'perfect fifth']],
+  ['sus4', ['tonic', 'perfect fourth', 'perfect fifth']],
   ['maj7', ['tonic', 'major third', 'perfect fifth', 'major seventh']],
   ['7', ['tonic', 'major third', 'perfect fifth', 'minor seventh']],
   ['min7', ['tonic', 'minor third', 'perfect fifth', 'minor seventh']],
@@ -60,6 +62,8 @@ export const chordsIntervals = new Map([
 export const typesLabels = new Map([
   ['maj', ' '],
   ['min', 'm'],
+  ['sus2', 'sus2'],
+  ['sus4', 'sus4'],
   ['dim', 'dim'],
   ['aug', 'aug'],
   ['maj7', 'maj7'],
@@ -72,6 +76,8 @@ export const typesLabels = new Map([
 export const types = [
   'maj',
   'min',
+  'sus2',
+  'sus4',
   'dim',
   'aug',
   'dim7',
