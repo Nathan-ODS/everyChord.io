@@ -13,7 +13,6 @@ const ChordsMenu = ({ activeChord, onChordChange }) => {
   const [roots, setRoots] = useState([]);
   const [types, setTypes] = useState([]);
   const [typesLabels, setTypesLabels] = useState({});
-  const [areRootsDisplayed, setAreRootsDisplayed] = useState(true);
 
   // fetchTypesAndRoots
   useEffect(() => {
@@ -46,7 +45,7 @@ const ChordsMenu = ({ activeChord, onChordChange }) => {
 
   const PrimaryButton = activeChord?.label.includes('undefined') 
   ? ChordButton({ childElement: <FaSpinner className='spinner' />, className: 'primary-button primary-button--loading'})
-  : ChordButton({ label: activeChord?.label, className: 'primary-button', onClick: () => setAreRootsDisplayed(!areRootsDisplayed) });
+  : ChordButton({ label: activeChord?.label, className: 'primary-button', onClick: () => {}});
 
   return (
     <div className='chords-menu'>
@@ -54,13 +53,13 @@ const ChordsMenu = ({ activeChord, onChordChange }) => {
         {PrimaryButton}
       </div>
       <div className='orbits-container'>
-        <div className={`root-orbit-container ${!areRootsDisplayed ? 'root-orbit-container--hidden' : ''}`}>
+        <div className='root-orbit-container'>
           <Planet
-            open={areRootsDisplayed}
+            open
             orbitRadius={120}
             rotation={165}
             hideOrbit
-            dragableSatellites={true}
+            dragableSatellites
             bounceRadius={0.5}
             bounce={false}
           >
@@ -77,11 +76,11 @@ const ChordsMenu = ({ activeChord, onChordChange }) => {
         </div>
         <div className='type-orbit-container'>
           <Planet
-            open={true}
-            orbitRadius={areRootsDisplayed ? 200 : 150}
+            open
+            orbitRadius={200}
             rotation={163.5}
             hideOrbit
-            dragableSatellites={true}
+            dragableSatellites
             bounceRadius={0}
             bounce={false}
             bounceOnOpen={false}
