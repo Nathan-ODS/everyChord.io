@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { AuthProvider } from './contexts/AuthContext';
+import { AudioProvider } from './contexts/AudioContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -10,20 +11,22 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <AuthProvider>
-        <ToastContainer
-            position="top-center"
-            autoClose={1500}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-        />
-        <App />
-    </AuthProvider>
+    <AudioProvider>
+        <AuthProvider>
+            <ToastContainer
+                position="top-center"
+                autoClose={1500}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+            <App />
+        </AuthProvider>
+    </AudioProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

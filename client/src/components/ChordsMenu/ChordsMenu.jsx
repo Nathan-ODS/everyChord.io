@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Planet } from 'react-planet';
 import { FaSpinner } from 'react-icons/fa';
-import "./ChordsMenu.css";
+import { toast } from 'react-toastify'
 
+import { useAudio } from '../../contexts/AudioContext';
 import ChordButton from '../ChordButton/ChordButton'
+import "./ChordsMenu.css";
 
 // const chords = { root: 'C', type: 'maj', label: 'C' };
 
-const ChordsMenu = ({ activeChord, onChordChange, onPrimaryButtonClick }) => {
+const ChordsMenu = ({ activeChord, onChordChange }) => {
   const [activeRoot, setActiveRoot] = useState('C');
   const [activeType, setActiveType] = useState('maj');
   const [roots, setRoots] = useState([]);
   const [types, setTypes] = useState([]);
   const [typesLabels, setTypesLabels] = useState({});
+  const { pianoAudio, playActiveChord } = useAudio()
 
   // fetchTypesAndRoots
   useEffect(() => {
@@ -43,9 +46,18 @@ const ChordsMenu = ({ activeChord, onChordChange, onPrimaryButtonClick }) => {
     }
   }, [activeChord, activeRoot, activeType, onChordChange, typesLabels]);
 
-  const PrimaryButton = activeChord?.label.includes('undefined') 
-  ? ChordButton({ childElement: <FaSpinner className='spinner' />, className: 'primary-button primary-button--loading'})
-  : ChordButton({ label: activeChord?.label, className: 'primary-button', onClick: () => onPrimaryButtonClick((isPlaying) => !isPlaying)});
+  function onPrimaryButtonClick() {
+    if (!pianoAudio) {
+      toast.error('load piano audio to replay active chord')
+      return
+    } else {
+      playActiveChord()
+    }
+  }
+
+  const PrimaryButton = activeChord?.label.includes('undefined')
+    ? ChordButton({ childElement: <FaSpinner className='spinner' />, className: 'primary-button primary-button--loading' })
+    : ChordButton({ label: activeChord?.label, className: 'primary-button', onClick: onPrimaryButtonClick });
 
   return (
     <div className='chords-menu'>

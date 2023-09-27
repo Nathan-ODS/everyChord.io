@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Piano, MidiNumbers } from 'react-piano';
-import { SplendidGrandPiano, CacheStorage } from "smplr";
-import debounce from 'lodash/debounce';
-import { toast } from 'react-toastify';
-
-import MyButton from "../MyButton/MyButton";
 import 'react-piano/dist/styles.css';
-import "./ChordContent.css";
-import { FaSpinner } from "react-icons/fa";
+
 import ChordSummary from "./ChordSummary/ChordSummary";
+import MyButton from "../MyButton/MyButton";
+import { useAudio } from "../../contexts/AudioContext";
+
+import { FaSpinner } from "react-icons/fa";
 
 
-const ChordContent = ({ activeChord, isPlayingChord }) => {
-  const [pianoAudio, setPianoAudio] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+import "./ChordContent.css";
 
-  const [activeNotes, setActiveNotes] = useState([]);
+
+const ChordContent = ({ activeChord }) => {
+  const { pianoAudio, lastActiveNotes, isLoading, setupPianoAudio, setLastActiveNotes } = useAudio()
   const [activeMidiChord, setActiveMidiChord] = useState([]);
 
   const firstNote = MidiNumbers.fromNote('a3');
@@ -26,39 +24,17 @@ const ChordContent = ({ activeChord, isPlayingChord }) => {
     last: lastNote,
   };
 
-  // Piano Audio setup
-  useEffect(() => {
-    async function setupPianoAudio() {
-      try {
-        const context = new AudioContext();
-        const storage = new CacheStorage();
-        const pianoInstance = await new SplendidGrandPiano(context, { storage }).loaded();
-        setPianoAudio(pianoInstance);
-      } catch (error) {
-        console.error('Error setting up piano:', error);
-      } finally {
-        setIsLoading(false);
-        toast.success('Piano Audio successfully loaded 🎹 🎵')
-      }
-    };
-
-    if (!pianoAudio && isLoading) {
-      setupPianoAudio();
-    }
-  }, [pianoAudio, isLoading]);
-
-
   // Fetch chord object
   useEffect(() => {
     async function fetchChord() {
       try {
         const res = await fetch(`/api/chord/${activeChord?.root}/${activeChord?.type}`);
         const data = await res.json();
-        setActiveNotes(data.notes);
+        setLastActiveNotes(data.notes);
         setActiveMidiChord(data.midiChord);
       } catch (error) {
         console.error("Error fetching", error);
-        setActiveNotes([]);
+        setLastActiveNotes([]);
         setActiveMidiChord([]);
       }
     }
@@ -66,37 +42,11 @@ const ChordContent = ({ activeChord, isPlayingChord }) => {
     if (activeChord) {
       fetchChord();
     }
-  }, [activeChord, pianoAudio]);
-
-  // Play Piano sound  
-  useEffect(() => {
-    function playPiano() {
-      activeNotes.forEach((note) => {
-        pianoAudio.start({ note: note, velocity: 50 });
-      });
-    };
-
-    const debouncedPlayPiano = debounce(() => {
-      if (!pianoAudio && isPlayingChord) {
-        toast.info('Load Piano Audio to Play active chord')
-      }
-      if (activeNotes && pianoAudio) {
-        pianoAudio.stop()
-        playPiano();
-      }
-    }, 100);
-
-    debouncedPlayPiano();
-
-    // Cleanup the debounced function on component unmount
-    return () => {
-      debouncedPlayPiano.cancel();
-    };
-  }, [activeNotes, pianoAudio, isPlayingChord]);
+  }, [activeChord, setLastActiveNotes]);
 
   return (
     <div className="chord-content">
-      <ChordSummary activeNotes={activeNotes} activeMidiChord={activeMidiChord} activeChordLabel={activeChord?.label} />
+      <ChordSummary activeNotes={lastActiveNotes} activeMidiChord={activeMidiChord} activeChordLabel={activeChord?.label} />
 
       <div className="piano-container">
         {!pianoAudio
@@ -105,9 +55,7 @@ const ChordContent = ({ activeChord, isPlayingChord }) => {
               <MyButton
                 className={isLoading ? 'load-button--loading' : 'load-button'}
                 label={!isLoading ? 'Load piano audio' : ''}
-                onClick={() => {
-                  setIsLoading(true)
-                }}
+                onClick={setupPianoAudio}
                 childElement={isLoading ? <FaSpinner className='spinner' /> : undefined}
               />
             }
@@ -116,8 +64,8 @@ const ChordContent = ({ activeChord, isPlayingChord }) => {
         <Piano
           noteRange={noteRange}
           width={750}
-          playNote={() => { }}
-          stopNote={() => { }}
+          playNote={() => {}}
+          stopNote={() => {}}
           activeNotes={activeMidiChord}
         />
       </div>
