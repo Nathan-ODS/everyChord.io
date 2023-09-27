@@ -12,12 +12,19 @@
 
     background-color: white;
     color: black;
+
+    transition: ease-in-out all 0.1s;
+    transform: scale(1);
 }
 
 .chord-button:hover {
     background-color:#8a8a8a;
     color:rgb(255, 255, 255);
 }
+
+.chord-button:active {
+    transform: scale(0.95);
+  }
 
 .active {
     color: rgb(255, 255, 255);

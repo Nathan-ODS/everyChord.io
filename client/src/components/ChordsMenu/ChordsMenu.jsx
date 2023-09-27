@@ -7,7 +7,7 @@ import ChordButton from '../ChordButton/ChordButton'
 
 // const chords = { root: 'C', type: 'maj', label: 'C' };
 
-const ChordsMenu = ({ activeChord, onChordChange }) => {
+const ChordsMenu = ({ activeChord, onChordChange, onPrimaryButtonClick }) => {
   const [activeRoot, setActiveRoot] = useState('C');
   const [activeType, setActiveType] = useState('maj');
   const [roots, setRoots] = useState([]);
@@ -45,7 +45,7 @@ const ChordsMenu = ({ activeChord, onChordChange }) => {
 
   const PrimaryButton = activeChord?.label.includes('undefined') 
   ? ChordButton({ childElement: <FaSpinner className='spinner' />, className: 'primary-button primary-button--loading'})
-  : ChordButton({ label: activeChord?.label, className: 'primary-button', onClick: () => {}});
+  : ChordButton({ label: activeChord?.label, className: 'primary-button', onClick: () => onPrimaryButtonClick((isPlaying) => !isPlaying)});
 
   return (
     <div className='chords-menu'>

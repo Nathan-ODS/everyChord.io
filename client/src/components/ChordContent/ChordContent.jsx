@@ -11,7 +11,7 @@ import { FaSpinner } from "react-icons/fa";
 import ChordSummary from "./ChordSummary/ChordSummary";
 
 
-const ChordContent = ({ activeChord }) => {
+const ChordContent = ({ activeChord, isPlayingChord }) => {
   const [pianoAudio, setPianoAudio] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -38,7 +38,7 @@ const ChordContent = ({ activeChord }) => {
         console.error('Error setting up piano:', error);
       } finally {
         setIsLoading(false);
-        toast.success('Piano Audio successfully loaded 🎹🎵')
+        toast.success('Piano Audio successfully loaded 🎹 🎵')
       }
     };
 
@@ -77,6 +77,9 @@ const ChordContent = ({ activeChord }) => {
     };
 
     const debouncedPlayPiano = debounce(() => {
+      if (!pianoAudio && isPlayingChord) {
+        toast.info('Load Piano Audio to Play active chord')
+      }
       if (activeNotes && pianoAudio) {
         pianoAudio.stop()
         playPiano();
@@ -89,7 +92,7 @@ const ChordContent = ({ activeChord }) => {
     return () => {
       debouncedPlayPiano.cancel();
     };
-  }, [activeNotes, pianoAudio]);
+  }, [activeNotes, pianoAudio, isPlayingChord]);
 
   return (
     <div className="chord-content">

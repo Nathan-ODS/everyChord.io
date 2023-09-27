@@ -8,6 +8,7 @@ import { useAuth } from "./contexts/AuthContext";
 // Main App
 function App() {
   const [activeChord, setActiveChord] = useState(undefined);
+  const [isPlayingChord, setIsPlayingChord] = useState(false);
   const { user } = useAuth()
 
   return (
@@ -26,11 +27,13 @@ function App() {
           <ChordsMenu
             activeChord={activeChord}
             onChordChange={setActiveChord}
+            onPrimaryButtonClick={setIsPlayingChord}
           />
         </section>
         <section className="chord-content-container">
           <ChordContent
             activeChord={activeChord}
+            isPlayingChord={isPlayingChord}
           />
         </section>
       </div>
