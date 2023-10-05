@@ -27,5 +27,11 @@
 }
 
 .notes {
+    padding-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 
+    font-size: x-large;
 }
