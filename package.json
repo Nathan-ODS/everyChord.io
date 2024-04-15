@@ -2,12 +2,12 @@
   "name": "everychord.io",
   "version": "1.0.0",
   "description": "- This app will display a piano and chords. You can : - play the piano and get the chords you're currently playing - search for a chord using the Interactive chord wheel",
-  "dependencies": {
-
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "concurrently --kill-others \"cd client && npm start\" \"cd server && npm start\"",
+    "install": "concurrently \"cd client && npm install\" \"cd server && npm install\""
   },
   "repository": {
     "type": "git",

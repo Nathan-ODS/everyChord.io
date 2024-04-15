@@ -10,11 +10,10 @@
 
 .load-button-container {
     position: absolute;
+    width: 160px;
 }
 
 .load-button--loading{
-    min-width: 123px;
-    min-height: 18px;
     opacity: 0;
 }
 
