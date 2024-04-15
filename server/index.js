@@ -9,8 +9,14 @@ const PORT = /* process.env.PORT || */ 3001
 const app = express()
 
 app.use(bodyParser.json())
+if (process.env.NODE_ENV === 'production') {
+  console.log('Production mode')
+  app.use(express.static('../client/build'))
+} else {
+  console.log('Development mode')
+}
 
-app.get('/api', (req, res) => {
+app.get('/', (req, res) => {
   res.json({ message: 'Hi from api' })
 })
 

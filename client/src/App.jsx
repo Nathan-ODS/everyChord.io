@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h2>Every chord</h2>
-        <p>(Not EVERY chord but you get it 🤓)</p>
+        <span>(Not EVERY chord but you get it 🤓)</span>
       </header>
       <div className="container">
         <section className="chords-menu-container">
