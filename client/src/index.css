@@ -1,7 +1,12 @@
+html {
+  background-image: linear-gradient(to right bottom, #5196dd, #5db8d1, #5dc2f4, #7bbcf9, #9ab6f9, #9fb1f5, #a3acf1, #a8a7ed, #95a3ea, #819ee6, #6b9ae2, #5196dd);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 
-    sans-serif;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-weight:500;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

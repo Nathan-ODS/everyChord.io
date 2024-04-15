@@ -46,7 +46,9 @@ const ChordContent = ({ activeChord }) => {
 
   return (
     <div className="chord-content">
-      <ChordSummary activeNotes={lastActiveNotes} activeMidiChord={activeMidiChord} activeChordLabel={activeChord?.label} />
+      { activeChord &&
+        <ChordSummary activeNotes={lastActiveNotes} activeMidiChord={activeMidiChord} activeChordLabel={activeChord?.label} />
+      }
 
       <div className="piano-container">
         {!pianoAudio

@@ -1,15 +1,15 @@
 .chord-content{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 30px;
 
-    align-items: center;
+    height: 100%;
 }
 
 .load-button-container {
     position: absolute;
-    margin-left:auto;
-    right:0;
 }
 
 .load-button--loading{
@@ -23,8 +23,6 @@
     display: flex;
     flex-direction: column;
     border-radius: 40px;
-
-    padding-bottom: 20px;
 }
 
 .ReactPiano__Keyboard {

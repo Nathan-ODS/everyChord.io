@@ -2,13 +2,10 @@
     color: white;
 
     position: relative;
-    height: 280px;
-    width: 700px;
+    height: 150px;
+    width: 300px;
 
     border-radius: 40px;
-
-    margin-top: 20px;
-    padding: 10px 20px 10px 20px;
 
     border: 1px solid rgba(255, 255, 255, 0.397);
     box-shadow: rgba(255, 255, 255, 0.034) 0px 7px 29px 0px;
