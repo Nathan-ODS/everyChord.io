@@ -28,7 +28,7 @@ const ChordContent = ({ activeChord }) => {
   useEffect(() => {
     async function fetchChord() {
       try {
-        const res = await fetch(`/api/chord/${activeChord?.root}/${activeChord?.type}`);
+        const res = await fetch(`/api/chords/${activeChord?.root}/${activeChord?.type}`);
         const data = await res.json();
         setLastActiveNotes(data.notes);
         setActiveMidiChord(data.midiChord);

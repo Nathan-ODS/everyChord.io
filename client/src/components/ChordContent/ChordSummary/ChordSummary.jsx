@@ -2,8 +2,6 @@ import React from "react";
 import "./ChordSummary.css";
 
 const ChordSummary = ({ activeNotes, activeChordLabel }) => {
-  console.log(activeNotes, activeChordLabel)
-
   return (
     <div className="chord-summary">
       {!activeChordLabel.includes("undefined") && (

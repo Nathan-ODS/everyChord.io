@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import ChordContent from "./components/ChordContent/ChordContent"
 import ChordsMenu from './components/ChordsMenu/ChordsMenu'
+
+import { FaHandsHelping, FaHandHoldingHeart } from "react-icons/fa";
 import "./App.css";
 
 // Main App
@@ -24,6 +26,10 @@ function App() {
           <ChordContent
             activeChord={activeChord}
           />
+          <article className="about-container">
+            <p><FaHandHoldingHeart /> Created by Nathan-ODS - <a href="https://github.com/Nathan-ODS/everyChord.io">EveryChord.io</a></p>
+            <p><FaHandsHelping /> Find me on <a href="https://github.com/Nathan-ODS">GitHub</a></p>
+          </article>
         </section>
       </div>
     </div>

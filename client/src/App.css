@@ -8,10 +8,11 @@
   width: 100vw;
   min-width: 1400px;
   min-height: 750px;
+
+  color: white;
 }
 
 .App-header {
-  color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,11 +52,27 @@
 }
 
 .chord-content-container {
+  display: flex;
+  flex-direction: column;
   flex: 3;
+  justify-content: space-between;
 }
 
 .spinner {
   animation: spin 1s infinite linear;
+}
+
+.about-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+a:link {
+  color: #3ac8da;
+}
+
+a:visited {
+  color: #3ac8da;
 }
 
 @keyframes spin {

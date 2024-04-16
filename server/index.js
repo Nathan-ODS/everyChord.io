@@ -2,23 +2,18 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import midiToNote from 'midi-note'
 
+import path, { dirname } from 'path'
+import { fileURLToPath } from 'url'
+
 import { types, typesLabels, roots } from './utils/consts.js'
 import { getMidiChord } from './utils/getMidiChord.js'
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const PORT = /* process.env.PORT || */ 3001
 const app = express()
 
 app.use(bodyParser.json())
-if (process.env.NODE_ENV === 'production') {
-  console.log('Production mode')
-  app.use(express.static('../client/build'))
-} else {
-  console.log('Development mode')
-}
-
-app.get('/', (req, res) => {
-  res.json({ message: 'Hi from api' })
-})
 
 // initial load
 app.get('/api/types', (req, res) => {
@@ -40,7 +35,7 @@ app.get('/api/roots', (req, res) => {
 })
 
 // get chord from root+type (example : root=C type=maj)
-app.get('/api/chord/:rootNote/:chordType', (req, res) => {
+app.get('/api/chords/:rootNote/:chordType', (req, res) => {
   const rootNote = req.params.rootNote
   const chordType = req.params.chordType
   const midiChord = getMidiChord(rootNote, chordType)
@@ -52,6 +47,18 @@ app.get('/api/chord/:rootNote/:chordType', (req, res) => {
     notes
   })
 })
+
+
+if (process.env.NODE_ENV === 'production') {
+  console.log('Production mode')
+  app.use(express.static(path.resolve(__dirname, '../client/build')))
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'))
+  });
+} else {
+  console.log('Development mode')
+}
 
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`)

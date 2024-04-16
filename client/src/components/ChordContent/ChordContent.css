@@ -1,11 +1,12 @@
 .chord-content{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     gap: 30px;
 
     height: 100%;
+    margin-bottom: 40px;
 }
 
 .load-button-container {
