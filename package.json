@@ -8,7 +8,9 @@
   "scripts": {
     "start": "concurrently --kill-others \"cd client && npm start\" \"cd server && npm start\"",
     "start:prod": "cd client && npm run build && cd ../server && npm run start:prod",
-    "install": "npm install && concurrently \"cd client && npm install\" \"cd server && npm install\"",
+    "postinstall": "npm run install:client && npm run install:server",
+    "install:client": "cd client && npm install",
+    "install:server": "cd server && npm install",
     "build": "cd client && npm run build"
   },
   "repository": {
