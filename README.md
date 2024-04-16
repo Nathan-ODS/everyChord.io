@@ -15,8 +15,8 @@ You can :
 # Installation
 - `npm install` _this will install everything needed for the client and the server_
 - you might want to have two terminals for this:
-  -  **client** terminal: `cd client && npm start`
   -  **server** terminal: `cd server && npm start`
+  -  **client** terminal: `cd client && npm start`
 
 # Build
 - `npm install`
