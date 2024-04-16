@@ -17,6 +17,11 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+
+  h3 {
+    font-weight:600;
+    font-size: x-large;
+  }
 }
 
 .container {

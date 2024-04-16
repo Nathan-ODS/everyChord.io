@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h2>Every chord</h2>
+        <h3>EveryChord</h3>
         <span>(Not EVERY chord but you get it 🤓)</span>
       </header>
       <div className="container">
