@@ -7,8 +7,8 @@
   },
   "scripts": {
     "start": "concurrently --kill-others \"cd client && npm start\" \"cd server && npm start\"",
-    "start:prod": "cd client && npm run build && cd ../server && npm run start:prod",
-    "postinstall": "npm run install:client && npm run install:server",
+    "start:prod": "node server/index.js",
+    "postinstall": "npm run install:client && npm run install:server && npm run build",
     "install:client": "cd client && npm install",
     "install:server": "cd server && npm install",
     "build": "cd client && npm run build"
